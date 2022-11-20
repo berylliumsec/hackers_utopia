@@ -71,5 +71,3 @@ Start Burpsuite Community
 ```bash
 /usr/local/bin/BurpSuiteCommunity
 ```
-
-git remote add origin git@github-petusawo:berryliumsec/hackers_utopia.git
