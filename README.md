@@ -1,8 +1,6 @@
 # Hackers Utopia
 
-The purpose of the project is to:
-
-TO DO
+A collection of hacking tools in a docker image.
   
 ## Supported Open Source Applications
 
