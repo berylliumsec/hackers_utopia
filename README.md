@@ -51,13 +51,13 @@ docker run -itd --name hackers_utopia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp
 Run nmap commands:
 
 ```bash
-docker exec YOUR_PREFERRED_CONTAINER_NAME nmap YOUR-NNMAP-COMMAND
+docker exec hackers_utopia nmap YOUR-NNMAP-COMMAND
 ```
 
 To start nessus:
 
 ```bash
-docker exec YOUR_PREFERRED_CONTAINER_NAME /etc/init.d/nessusd start
+docker exec hackers_utopia /etc/init.d/nessusd start
 ```
 
 Start Burpsuite Pro
