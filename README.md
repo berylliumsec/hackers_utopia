@@ -2,11 +2,14 @@
 
 A collection of hacking tools in a docker image.
   
-## Supported Open Source Applications
+## Supported Applications
 
 - OWASP Zap
 - NMAP
 - Nessus
+- Burpsuite Community
+- Burpsuite Professional
+- Cobalt Strike
   
 ## Getting Started
 
