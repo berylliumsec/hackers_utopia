@@ -1,4 +1,6 @@
+FROM amazon/aws-cli:latest as one
 FROM kalilinux/kali-rolling:amd64
+COPY --from=one /usr/local/bin/aws/ /usr/local/bin/aws/
 ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008,DL3009

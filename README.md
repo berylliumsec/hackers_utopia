@@ -16,6 +16,12 @@ A collection of hacking tools in a docker image.
 
 ### Usage
 
+Build the image
+
+```bash
+docker-compose build
+```
+
 Get the display id of the running display
 
 ```bash
