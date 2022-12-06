@@ -52,7 +52,7 @@ xhost +local:docker
 Start the image in detached mode:
 
 ```bash
-docker run -itd --name hackers_utopia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/APP -p 8834:8834 berryliumsec/hackers_utopia 
+docker run -itd --restart unless-stopped --name hackers_utopia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/APP -p 8834:8834 berryliumsec/hackers_utopia 
 ```
 
 Run nmap commands:
