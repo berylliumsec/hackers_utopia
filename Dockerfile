@@ -18,8 +18,7 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     wget \ 
     curl \
     expect \
-    wireshark \
-    python3-pip
+    wireshark 
 
 RUN pip3 install \
     boto3
@@ -41,7 +40,7 @@ RUN wget https://download.java.net/java/GA/jdk19/877d6127e982470ba2a7faa31cc93d0
 RUN tar zxvf openjdk-19_linux-x64_bin.tar.gz && mv jdk-19 /usr/local
 RUN echo 'JAVA_HOME="/usr/local/jdk-19"' >> ~/.bashrc
 RUN echo 'PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-COPY entrypoint.sh discover_aws_services.py ./
+COPY entrypoint.sh discover_services.py ./
 RUN chmod +x entrypoint.sh burpsuite_pro_linux_v2022_9_6.sh burpsuite_community_linux_v2022_9_6.sh burpsuite_pro burpsuite_community
 RUN ./burpsuite_pro && ./burpsuite_community
 RUN cd /usr/share/nmap/scripts/ && \
