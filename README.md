@@ -58,7 +58,7 @@ docker run -itd --restart unless-stopped --name hackers_utopia -e DISPLAY=$DISPL
 Access the container's CLI
 
 ```bash
-docker exect -it hackers_utopia /bin/bash
+docker exec -it hackers_utopia /bin/bash
 ```
 
 Run nmap commands:
