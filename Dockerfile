@@ -1,6 +1,5 @@
-FROM amazon/aws-cli:latest as one
+
 FROM kalilinux/kali-rolling:amd64
-COPY --from=one /usr/local/bin/aws /usr/local/bin/aws
 ENV DEBIAN_FRONTEND noninteractive
 
 # hadolint ignore=DL3008,DL3009
@@ -21,7 +20,8 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     wireshark 
 
 RUN pip3 install \
-    boto3
+    boto3 \
+    awscli
 RUN curl --request GET \
     --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.4.1-ubuntu1404_amd64.deb' \
     --output 'Nessus-10.4.1-ubuntu1404_amd64.deb'

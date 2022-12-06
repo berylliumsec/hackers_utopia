@@ -85,6 +85,17 @@ Start Burpsuite Community
 docker exec hackers_utopia /usr/local/bin/BurpSuiteCommunity
 ```
 
+Stop the container
+
+```bash
+docker stop hackers_utopia 
+```
+
+Remove the container
+
+```bash
+docker rm hackers_utopia
+```
 
 ## TODO
 
