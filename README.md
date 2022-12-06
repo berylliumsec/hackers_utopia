@@ -55,6 +55,12 @@ Start the image in detached mode:
 docker run -itd --restart unless-stopped --name hackers_utopia -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/APP -p 8834:8834 berryliumsec/hackers_utopia 
 ```
 
+Access the container's CLI
+
+```bash
+docker exect -it hackers_utopia /bin/bash
+```
+
 Run nmap commands:
 
 ```bash
@@ -70,13 +76,13 @@ docker exec hackers_utopia /etc/init.d/nessusd start
 Start Burpsuite Pro
 
 ```bash
-/usr/local/bin/BurpSuitePro
+docker exec hackers_utopia /usr/local/bin/BurpSuitePro
 ```
 
 Start Burpsuite Community
 
 ```bash
-/usr/local/bin/BurpSuiteCommunity
+docker exec hackers_utopia /usr/local/bin/BurpSuiteCommunity
 ```
 
 
