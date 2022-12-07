@@ -36,7 +36,7 @@ def set_env_vars() -> None:
     logging.debug(response)
     os.putenv("AccessKeyId" , response["Credentials"]["AccessKeyId"])
     os.putenv("SecretAccessKey" , response["Credentials"]["SecretAccessKey"])
-    os.putenv("TokenCode" , response["Credentials"]["TokenCode"])
+    os.putenv("TokenCode" , response["Credentials"]["SessionToken"])
 
 
 if __name__ == "__main__":

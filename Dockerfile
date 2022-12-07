@@ -19,7 +19,9 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     expect \
     wireshark \
     unzip \
-    less
+    less \
+    iputils-ping \
+    net-tools
 
 RUN pip3 install \
     boto3 
