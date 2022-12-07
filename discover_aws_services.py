@@ -31,7 +31,7 @@ parser.add_argument(
 def get_services() -> None:
     """Retrieve all deployed AWS Services"""
     client = boto3.client("resourcegroupstaggingapi", region_name=args.Region)
-    resources = client.resources()
+    resources = client.get_resources()
     for resource in resources["ResourcetagMappingList"]:
         split_resource = resource["ResourceARN"].split(":")
     logging.DEBUG(split_resource)
