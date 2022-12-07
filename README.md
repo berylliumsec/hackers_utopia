@@ -17,7 +17,7 @@ A collection of hacking tools in a docker image.
 
 - Docker
 
-### Usage
+### Usage (Docker)
 
 Build the image
 
@@ -97,6 +97,11 @@ Remove the container
 docker rm hackers_utopia
 ```
 
+### Usage (set_aws_envs)
+
+```bash
+python3 set_aws_envs.py --Region="your_region" --Serial_number="your_serial_number" --Token="your_mfa_token"
+``
 ## TODO
 
 - bloodhound

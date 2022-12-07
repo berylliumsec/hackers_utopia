@@ -19,6 +19,13 @@ parser.add_argument(
     metavar="Serial_number",
     help="Serial_number",
 )
+parser.add_argument(
+    "--Token",
+    type=str,
+    metavar="Token",
+    help="Token",
+)
+
 def set_env_vars() -> None:
     """Authenticate to AWS and set Vars"""
     client =  boto3.client("sts", region_name=args.Region)
