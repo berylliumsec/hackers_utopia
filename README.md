@@ -107,7 +107,7 @@ docker rm hackers_utopia
 
 ```bash
 python3 set_aws_envs.py --Region="your_region" --Serial_number="arn:aws:iam::123456789012:mfa/user" --Token="your_mfa_token"
-``
+```
 ## TODO
 
 - bloodhound
