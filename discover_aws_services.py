@@ -12,7 +12,8 @@ parser.add_argument(
     metavar="Region",
     help="Region",
 )
-def get_services():
+def get_services() -> None:
+    """Retrieve all deployed AWS Services"""
     client =  boto3.client("resourcegroupstaggingapi", region_name=args.Region)
     resources = client.resources()
     for resource in resources["ResourcetagMappingList"]:
