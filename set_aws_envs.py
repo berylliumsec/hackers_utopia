@@ -34,3 +34,4 @@ def set_env_vars() -> None:
 
 if __name__ == "__main__":
     args = parser.parse_args()
+    set_env_vars()
