@@ -1,7 +1,7 @@
 
 FROM kalilinux/kali-rolling:amd64
 ENV DEBIAN_FRONTEND noninteractive
-
+ENV PATH="$PATH:/usr/bin/aws"
 # hadolint ignore=DL3008,DL3009
 
 RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y && apt-get -y install --no-install-recommends \
@@ -17,18 +17,19 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     wget \ 
     curl \
     expect \
-    wireshark 
+    wireshark \
+    unzip
 
 RUN pip3 install \
-    boto3 \
-    awscli
+    boto3 
 RUN curl --request GET \
     --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.4.1-ubuntu1404_amd64.deb' \
     --output 'Nessus-10.4.1-ubuntu1404_amd64.deb'
 
 RUN dpkg -i Nessus-10.4.1-ubuntu1404_amd64.deb
-
-
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
 WORKDIR /
 RUN mkdir APP RESULTS
 WORKDIR /APP
