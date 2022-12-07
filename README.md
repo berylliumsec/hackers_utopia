@@ -75,6 +75,12 @@ docker exec hackers_utopia /etc/init.d/nessusd start
 
 Start Burpsuite Pro
 
+Note that to use the in-built browser for manual testing, you have to
+allow it to run outside of the sandbox-b
+
+
+Project Options -> Misc -> Allow Browser to run without a sandbox
+
 ```bash
 docker exec hackers_utopia /usr/local/bin/BurpSuitePro
 ```
