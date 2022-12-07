@@ -106,7 +106,7 @@ docker rm hackers_utopia
 ### Usage (set_aws_envs)
 
 ```bash
-python3 set_aws_envs.py --Region="your_region" --Serial_number="your_serial_number" --Token="your_mfa_token"
+python3 set_aws_envs.py --Region="your_region" --Serial_number="arn:aws:iam::123456789012:mfa/user" --Token="your_mfa_token"
 ``
 ## TODO
 
