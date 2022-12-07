@@ -1,7 +1,8 @@
-import boto3
+import argparse
 import logging
 import os
-import argparse
+
+import boto3
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -25,25 +26,27 @@ parser.add_argument(
     metavar="Region",
     help="Region",
 )
+
+
 def get_services() -> None:
     """Retrieve all deployed AWS Services"""
-    client =  boto3.client("resourcegroupstaggingapi", region_name=args.Region)
+    client = boto3.client("resourcegroupstaggingapi", region_name=args.Region)
     resources = client.resources()
     for resource in resources["ResourcetagMappingList"]:
         split_resource = resource["ResourceARN"].split(":")
     logging.DEBUG(split_resource)
-    
+
+
 def set_env_vars() -> None:
     """Authenticate to AWS and set Vars"""
-    client =  boto3.client("sts", region_name=args.Region)
+    client = boto3.client("sts", region_name=args.Region)
     response = client.get_session_token(
-    SerialNumber=args.Serial_number,
-    TokenCode=args.Token
-)
+        SerialNumber=args.Serial_number, TokenCode=args.Token
+    )
     logging.debug(response)
-    os.putenv("AccessKeyId" , response["Credentials"]["AccessKeyId"])
-    os.putenv("SecretAccessKey" , response["Credentials"]["SecretAccessKey"])
-    os.putenv("TokenCode" , response["Credentials"]["SessionToken"])
+    os.putenv("AccessKeyId", response["Credentials"]["AccessKeyId"])
+    os.putenv("SecretAccessKey", response["Credentials"]["SecretAccessKey"])
+    os.putenv("TokenCode", response["Credentials"]["SessionToken"])
 
 
 if __name__ == "__main__":
