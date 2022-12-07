@@ -21,7 +21,8 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     unzip \
     less \
     iputils-ping \
-    net-tools
+    net-tools \
+    nano
 
 RUN pip3 install \
     boto3 
