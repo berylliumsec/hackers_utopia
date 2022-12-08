@@ -44,9 +44,9 @@ def set_env_vars() -> None:
         SerialNumber=args.Serial_number, TokenCode=args.Token
     )
     logging.debug(response)
-    os.putenv("AccessKeyId", response["Credentials"]["AccessKeyId"])
-    os.putenv("SecretAccessKey", response["Credentials"]["SecretAccessKey"])
-    os.putenv("TokenCode", response["Credentials"]["SessionToken"])
+    os.environ["AWS_ACCESS_KEY_ID"] = str(response["Credentials"]["AccessKeyId"])
+    os.environ["AWS_SECRET_ACCESS_KEY"] = str(response["Credentials"]["SecretAccessKey"])
+    os.environ["AWS_SESSION_TOKEN"] = str(response["Credentials"]["SessionToken"])
 
 
 if __name__ == "__main__":
