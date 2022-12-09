@@ -4,25 +4,26 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH="$PATH:/usr/bin/aws"
 # hadolint ignore=DL3008,DL3009
 
-RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
-RUN apt-get -y install --no-install-recommends nmap 
-RUN apt-get -y install --no-install-recommends zaproxy
-RUN apt-get -y install --no-install-recommends gnupg2 
-RUN apt-get -y install --no-install-recommends pass
-RUN apt-get -y install --no-install-recommends python3-pip
-RUN apt-get -y install --no-install-recommends openssh-client
-RUN apt-get -y install --no-install-recommends jq
-RUN apt-get -y install --no-install-recommends python-tk
-RUN apt-get -y install --no-install-recommends git
-RUN apt-get -y install --no-install-recommends wget
-RUN apt-get -y install --no-install-recommends curl
-RUN apt-get -y install --no-install-recommends expect
-RUN apt-get -y install --no-install-recommends wireshark
-RUN apt-get -y install --no-install-recommends unzip
-RUN apt-get -y install --no-install-recommends less
-RUN apt-get -y install --no-install-recommends iputils-ping
-RUN apt-get -y install --no-install-recommends net-tools
-RUN apt-get -y install --no-install-recommends nano
+RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y && \
+    apt-get -y install --no-install-recommends nmap \
+    zaproxy \
+    gnupg2 \
+    pass \
+    python3-pip \
+    openssh-client \
+    jq \
+    python-tk \
+    git \
+    wget \
+    curl \
+    expect \
+    wireshark \
+    unzip \
+    less \
+    iputils-ping \
+    net-tools \
+    nano && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
     boto3 
