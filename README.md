@@ -27,8 +27,16 @@ docker-compose build
 
 Get the display id of the running display
 
+Linux:
+
 ```bash
 w -oush
+```
+
+Macos:
+
+```bash
+env | grep DIS
 ```
 
 The output will be similar to the below where `:1` is the id of the display:
