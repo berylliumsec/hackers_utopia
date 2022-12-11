@@ -25,7 +25,7 @@ RUN apt update -y && apt upgrade -y && apt-get autoremove -y && apt-get clean -y
     nano && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install \
+RUN pip3 --no-cache-dir install \
     boto3 
 RUN curl --request GET \
     --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.4.1-ubuntu1404_amd64.deb' \
@@ -52,3 +52,5 @@ COPY discover_aws_services.py /APP/
 RUN cd /usr/share/nmap/scripts/ && \
     git clone https://github.com/vulnersCom/nmap-vulners.git && \
     wget https://raw.githubusercontent.com/daviddias/node-dirbuster/master/lists/directory-list-2.3-medium.txt
+RUN useradd -m hackers_utopia
+USER hackers_utopia
