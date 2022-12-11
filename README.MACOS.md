@@ -27,24 +27,22 @@ Build the image
 docker-compose build
 ```
 
-Get the display id of the running display
+### Enable displays
 
-Linux:
+Go to XQuartz preferences -> Security
+Enable "Allow connections from network clients"
+Restart XQuartz
+
+To confirm that the display server is now running on port 6000 run:
 
 ```bash
-w -oush
+netstat -an | grep -F 6000
 ```
 
-The output will be similar to the below where `:1` is the id of the display:
+Run the following command to allow local X11 connections:
 
 ```bash
-$YOUR_HOSTNAME     :1       :1               ?xdm?  /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu gnome-session --session=ubuntu
-```
-
-Set the display env as follows in:
-
-```bash
-export DISPLAY=:1
+xhost +localhost
 ```
 
 Allow docker use localhost display:
@@ -59,15 +57,11 @@ Start the image in detached mode:
 docker run -it --rm --name hackers_utopia -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/APP -p 8834:8834 berryliumsec/hackers_utopia /usr/local/bin/BurpSuiteCommunity 
 ```
 
-
-
-
 Access the container's CLI
 
 ```bash
 docker exec -it hackers_utopia /bin/bash
 ```
-
 Run nmap commands:
 
 ```bash
@@ -115,14 +109,8 @@ docker rm hackers_utopia
 ```bash
 python3 discover_aws_services.py --Region="your_region" --Serial_number="arn:aws:iam::123456789012:mfa/user" --Token="your_mfa_token"
 ```
+
 ## TODO
 
 - bloodhound
 
-From the XQuartz preferences, in the security tab, make sure Allow connections from network clients is enabled. Restart XQuartz.
-NB: After restarting XQuartz, you can run netstat -an | grep -F 6000 to find that XQuartz has opened port 6000. This is actually how your docker container will be communicating with XQuartz on the host. The volume mount is not (and cannot due to an ongoing issue -- more details in the original link) be used.
-
-In a terminal on the host, run xhost +localhost.
-NB: This will allow network X11 connections from localhost only, which is fine. Also if XQuartz is not running, xhost will start it.
-
-Pass -e DISPLAY=host.docker.internal:0 to any docker image you want to forward X to the host.
